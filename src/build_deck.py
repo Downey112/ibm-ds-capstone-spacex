@@ -208,7 +208,7 @@ sql('First Successful Ground-Pad Landing', "SELECT MIN(Date) AS first_success\nF
 sql('Drone-Ship Success with Payload 4,000–6,000 kg', "SELECT Booster_Version FROM SPACEXTBL\nWHERE Landing_Outcome = 'Success (drone ship)'\n  AND PAYLOAD_MASS__KG_ > 4000 AND PAYLOAD_MASS__KG_ < 6000;",
     ['F9 FT B1022 · F9 FT B1026 · F9 FT B1021.2 · F9 FT B1031.2', 'All four are Full Thrust boosters; two are re-flown cores (.2)'], 'All four boosters are Full Thrust versions, two of them re-flown cores.')
 sql('Total Successful and Failed Mission Outcomes', "SELECT Mission_Outcome, COUNT(*) AS total\nFROM SPACEXTBL GROUP BY Mission_Outcome;",
-    ['Success: 99 · Success (payload status unclear): 1 · Failure (in flight): 1', '→ 100 successful missions, 1 failure', 'Mission success is near-perfect; landing the booster is the harder problem'],
+    ['Success: 98 · "Success " (trailing space in source): 1 · Success (payload status unclear): 1 · Failure (in flight): 1', '→ 100 successful missions, 1 failure', 'Mission success is near-perfect; landing the booster is the harder problem'],
     'Mission success, meaning the payload reached orbit, is nearly perfect. Landing the booster is the harder problem.')
 sql('Boosters Carrying the Maximum Payload', "SELECT Booster_Version FROM SPACEXTBL WHERE PAYLOAD_MASS__KG_ =\n  (SELECT MAX(PAYLOAD_MASS__KG_) FROM SPACEXTBL);",
     ['Maximum payload: 15,600 kg', 'F9 B5 B1048.4 · B1049.4 · B1051.3 · B1056.4 · B1048.5 · B1051.4', 'F9 B5 B1049.5 · B1060.2 · B1058.3 · B1051.6 · B1060.3 · B1049.7', 'Only Block 5 boosters, mostly re-flown, carried the maximum payload'],

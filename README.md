@@ -13,7 +13,14 @@ Can we predict whether a Falcon 9 first stage will land successfully? SpaceX pri
 ## Repository layout
 | Path | Contents |
 |---|---|
-| `notebooks/` | IBM lab notebooks: API collection, web scraping, data wrangling, ML prediction |
+| `notebooks/1_data_collection_api.ipynb` | SpaceX API collection (static JSON + `json_normalize`, Falcon 1 removed → 90 launches, PayloadMass imputed). The live `api.spacexdata.com` returned HTTP 522 when it was run (2026-11-10), so the ID lookups fall back to IBM's published `dataset_part_1.csv`. |
+| `notebooks/2_webscraping.ipynb` | BeautifulSoup scraping of the Wikipedia launch list (revision 1027686922) |
+| `notebooks/3_data_wrangling.ipynb` | Outcome analysis and the `Class` label (success rate 0.667) |
+| `notebooks/4_eda_dataviz.ipynb` | EDA charts and one-hot features (83 columns) |
+| `notebooks/5_eda_sql.ipynb` | SQL queries with `%sql` on SQLite |
+| `notebooks/6_folium_launch_sites.ipynb` | Folium maps: sites, outcome markers, proximity distances |
+| `dash/spacex_dash_app.py` | Plotly Dash dashboard (+ screenshots) |
+| `notebooks/8_ml_prediction.ipynb` | LR, SVM, Decision Tree and KNN with GridSearchCV |
 | `src/` | Scripts that reproduce every number, chart and map in the deck |
 | `data/` | IBM course datasets: `p2.csv` = dataset_part_2, `p3.csv` = dataset_part_3 (one-hot features), `sql.csv` = Spacex.csv (SQL table), `dash.csv` = spacex_launch_dash.csv |
 | `outputs/charts/` | EDA, Dash and ML charts |
